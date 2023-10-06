@@ -29,35 +29,43 @@ const categoriesData: Category[] = [
   },
   {
     title: "Animals",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1669811247691-f59af80a9974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80",
   },
   {
     title: "Architecture",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1690983741690-087a721f0c15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Travel",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1691044852321-f2c95883aea7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80",
   },
   {
     title: "People",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1690875460503-9bdf82e6c203?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Sports",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1691036768234-cf1f4332a36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
   },
   {
     title: "3D Render",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1690823874730-f55a1673ece2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Fashion",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1691014193202-1d70d7e3d948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Film",
-    bgImage: "",
+    bgImage:
+      "https://images.unsplash.com/photo-1690442604217-aa441f1ac21e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
 ];
 
@@ -72,6 +80,7 @@ const CategoryGrid = () => {
         let isWider = index < 3;
         return (
           <CategoryCard
+            key={title + index}
             title={title}
             bgImage={bgImage}
             isWider={isWider}
@@ -106,13 +115,16 @@ const CategoryCard = ({
       href=""
       className={`
       relative p-2 rounded-md h-20 
-      transition-colors duration-300 ease-out
-      bg-cover bg-center
+      transition-all duration-100
+      bg-[length:110%] bg-center overflow-hidden
+      before:absolute before:content-['_'] before:transition-all before:duration-800
+      before:left-0 before:top-0 before:opacity-0 before:w-full before:h-full 
+      before:bg-black/50 before:z-10
       ${isWider ? "col-span-2" : "col-span-1"}
       ${
         currentHovered === id
-          ? "bg-blue-500"
-          : currentHovered !== null && "bg-gray-600"
+          ? "bg-[length:101%]"
+          : currentHovered !== null && "before:opacity-100"
       }
       `}
       style={{ backgroundImage: `url(${bgImage})` }}
@@ -124,7 +136,7 @@ const CategoryCard = ({
       }}
     >
       <span
-        className={`absolute right-2 bottom-2 text-white font-bold leading-5 ${
+        className={`text-lg absolute right-2 bottom-2 text-white font-bold leading-5 ${
           isWider ? null : "w-[60%] text-right"
         }`}
       >
