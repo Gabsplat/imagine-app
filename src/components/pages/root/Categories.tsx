@@ -1,6 +1,7 @@
 "use client";
 
 import { IconCategory } from "@tabler/icons-react";
+import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
 
 export default function Categories() {
@@ -24,46 +25,55 @@ type Category = {
 const categoriesData: Category[] = [
   {
     title: "Nature",
+    href: "/cat/nature",
     bgImage:
       "https://images.unsplash.com/photo-1694654760853-ac90921fca6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMzYwMzF8MHwxfGFsbHx8fHx8fHx8fDE2OTY1Mjc0MTd8&ixlib=rb-4.0.3&q=80&w=400",
   },
   {
     title: "Animals",
+    href: "/cat/animals",
     bgImage:
       "https://images.unsplash.com/photo-1669811247691-f59af80a9974?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80",
   },
   {
     title: "Architecture",
+    href: "/cat/architecture",
     bgImage:
       "https://images.unsplash.com/photo-1690983741690-087a721f0c15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Travel",
+    href: "/cat/travel",
     bgImage:
       "https://images.unsplash.com/photo-1691044852321-f2c95883aea7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80",
   },
   {
     title: "People",
+    href: "/cat/people",
     bgImage:
       "https://images.unsplash.com/photo-1690875460503-9bdf82e6c203?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Sports",
+    href: "/cat/sports",
     bgImage:
       "https://images.unsplash.com/photo-1691036768234-cf1f4332a36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
   },
   {
     title: "3D Render",
+    href: "/cat/3drender",
     bgImage:
       "https://images.unsplash.com/photo-1690823874730-f55a1673ece2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Fashion",
+    href: "/cat/fashion",
     bgImage:
       "https://images.unsplash.com/photo-1691014193202-1d70d7e3d948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
   {
     title: "Film",
+    href: "/cat/film",
     bgImage:
       "https://images.unsplash.com/photo-1690442604217-aa441f1ac21e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
   },
@@ -76,13 +86,14 @@ const CategoryGrid = () => {
 
   return (
     <div className="grid grid-cols-6 grid-rows-2 gap-4 h-auto">
-      {categoriesData.map(({ title, bgImage }, index) => {
+      {categoriesData.map(({ title, href, bgImage }, index) => {
         let isWider = index < 3;
         return (
           <CategoryCard
             key={title + index}
             title={title}
             bgImage={bgImage}
+            href={href}
             isWider={isWider}
             id={index}
             setHovered={setCurrentHoveredCard}
@@ -111,8 +122,8 @@ const CategoryCard = ({
   currentHovered,
 }: CategoryCard) => {
   return (
-    <a
-      href={href}
+    <Link
+      href={href || "/"}
       className={`
       relative p-2 rounded-md h-20 
       transition-[background-size,_opacity] duration-800 ease-in cursor-pointer
@@ -142,6 +153,6 @@ const CategoryCard = ({
       >
         {title}
       </span>
-    </a>
+    </Link>
   );
 };
