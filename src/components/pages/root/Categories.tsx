@@ -5,10 +5,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 export default function Categories() {
   return (
-    <section className="mt-10">
-      <span className="flex gap-2">
-        <IconCategory />
-        <h2>Categories</h2>
+    <section className="mt-14">
+      <span className="flex items-center mb-3 gap-2">
+        <IconCategory className="text-imagine-brown" />
+        <h2 className="text-imagine-brown font-medium text-lg">Categories</h2>
       </span>
       <CategoryGrid />
     </section>
@@ -75,7 +75,7 @@ const CategoryGrid = () => {
   );
 
   return (
-    <div className="grid grid-cols-6 grid-rows-2 gap-4 h-auto mt-3">
+    <div className="grid grid-cols-6 grid-rows-2 gap-4 h-auto">
       {categoriesData.map(({ title, bgImage }, index) => {
         let isWider = index < 3;
         return (
@@ -112,19 +112,19 @@ const CategoryCard = ({
 }: CategoryCard) => {
   return (
     <a
-      href=""
+      href={href}
       className={`
       relative p-2 rounded-md h-20 
-      transition-all duration-100
-      bg-[length:110%] bg-center overflow-hidden
+      transition-[background-size,_opacity] duration-800 ease-in cursor-pointer
+      bg-[length:115%] bg-center overflow-hidden
       before:absolute before:content-['_'] before:transition-all before:duration-800
       before:left-0 before:top-0 before:opacity-0 before:w-full before:h-full 
-      before:bg-black/50 before:z-10
+      before:bg-imagine-brown/60 before:z-10
       ${isWider ? "col-span-2" : "col-span-1"}
       ${
         currentHovered === id
-          ? "bg-[length:101%]"
-          : currentHovered !== null && "before:opacity-100"
+          ? "bg-[length:100%] outline outline-2 outline-offset-1 outline-imagine-brown/30"
+          : currentHovered !== null && "opacity-30"
       }
       `}
       style={{ backgroundImage: `url(${bgImage})` }}

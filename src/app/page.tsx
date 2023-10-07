@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default async function Home() {
   return (
-    <main className="h-screen py-12 gap-6 flex">
+    <main className="h-screen gap-32 flex">
       <LeftSection />
       <RightSection />
     </main>

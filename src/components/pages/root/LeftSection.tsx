@@ -1,17 +1,14 @@
-import { Input } from "@/components/ui/input";
-import { IconSearch } from "@tabler/icons-react";
 import Categories from "./Categories";
+import RandomCategory from "./RandomCategory";
+import SearchInput from "./SearchInput";
 
 export default function LeftSection() {
   return (
-    <div className="flex-1 h-full">
-      <h1 className="text-4xl text-primary font-bold">Imagine</h1>
-      <Input
-        leftIcon={IconSearch}
-        className="mt-3"
-        placeholder="Search high quality photos..."
-      />
+    <div className="pl-[5%] flex-1 py-12 h-full">
+      <h1 className="text-4xl text-imagine-brown font-bold">Imagine</h1>
+      <SearchInput />
       <Categories />
+      <RandomCategory />
     </div>
   );
 }
