@@ -125,18 +125,18 @@ const CategoryCard = ({
     <Link
       href={href || "/"}
       className={`
-      relative p-2 rounded-md h-20 
-      transition-[background-size,_opacity] duration-800 ease-in cursor-pointer
-      bg-[length:115%] bg-center overflow-hidden
-      before:absolute before:content-['_'] before:transition-all before:duration-800
-      before:left-0 before:top-0 before:opacity-0 before:w-full before:h-full 
-      before:bg-imagine-brown/60 before:z-10
-      ${isWider ? "col-span-2" : "col-span-1"}
-      ${
-        currentHovered === id
-          ? "bg-[length:100%] outline outline-2 outline-offset-1 outline-imagine-brown/30"
-          : currentHovered !== null && "opacity-30"
-      }
+        relative p-2 rounded-md h-20 
+        transition-[background-size,_opacity] duration-100 ease-in cursor-pointer
+        bg-[length:115%] bg-center overflow-hidden
+        before:absolute before:content-['_'] before:transition-all before:duration-75
+        before:left-0 before:top-0 before:opacity-0 before:w-full before:h-full 
+        before:bg-imagine-brown/60 before:z-10
+        ${isWider ? "col-span-2" : "col-span-1"}
+        ${
+          currentHovered === id
+            ? "bg-[length:100%] outline outline-2 outline-offset-1 outline-imagine-brown/30"
+            : currentHovered !== null && "opacity-30"
+        }
       `}
       style={{ backgroundImage: `url(${bgImage})` }}
       onMouseEnter={() => {
@@ -147,9 +147,11 @@ const CategoryCard = ({
       }}
     >
       <span
-        className={`text-lg absolute right-2 bottom-2 text-white font-bold leading-5 ${
-          isWider ? null : "w-[60%] text-right"
-        }`}
+        className={`
+          text-lg absolute right-2 bottom-2 
+          text-white font-bold leading-5 
+          ${isWider ? null : "w-[60%] text-right"}
+        `}
       >
         {title}
       </span>

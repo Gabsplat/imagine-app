@@ -1,3 +1,11 @@
+"use client"; // <-- CAMBIAR
+
+import Link from "next/link";
+
 export default function NotFoundPage() {
-  return <div>AAA shit</div>;
+  return (
+    <div>
+      Page not found, return <Link href="/">home.</Link>
+    </div>
+  );
 }
