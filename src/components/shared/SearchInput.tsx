@@ -15,6 +15,7 @@ export default function SearchInput({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   const search =
     pathname.split("/").length > 2 ? capitalize(pathname.split("/")[2]) : "";

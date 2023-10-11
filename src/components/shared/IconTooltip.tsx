@@ -6,9 +6,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
 
-export default function IconLinkTooltip({
+export default function IconTooltip({
   icon: Icon,
   href,
   text,
@@ -20,10 +19,8 @@ export default function IconLinkTooltip({
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger>
-          <Link href={href}>
-            <Icon size={28} className="text-imagine-brown" />
-          </Link>
+        <TooltipTrigger className="block">
+          <Icon className="text-imagine-brown w-7 h-7" />
         </TooltipTrigger>
         <TooltipContent>
           <span>{text}</span>
