@@ -1,6 +1,6 @@
 "use client";
 
-import { getRandomPhoto } from "@/lib/unsplashApi";
+import { getRandomPhoto } from "@/lib/unsplash";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 

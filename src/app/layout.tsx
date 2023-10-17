@@ -1,5 +1,6 @@
 import Container from "@/components/shared/Container";
 import ReactQueryProvider from "@/components/shared/ReactQueryProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          {children}
+          <ReactQueryDevtools initialIsOpen={false} />
+        </ReactQueryProvider>
       </body>
     </html>
   );

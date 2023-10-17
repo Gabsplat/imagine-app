@@ -3,22 +3,13 @@
 import { Input } from "@/components/ui/input";
 import { capitalize } from "@/lib/utils";
 import { IconSearch } from "@tabler/icons-react";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { FormEvent, useRef } from "react";
 
-export default function SearchInput({
-  className,
-  defaultValue,
-}: {
-  className?: string;
-  defaultValue?: string;
-}) {
-  const pathname = usePathname();
+export default function SearchInput({ className }: { className?: string }) {
+  const { slug } = useParams();
   const router = useRouter();
-
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const search =
-    pathname.split("/").length > 2 ? capitalize(pathname.split("/")[2]) : "";
 
   const submitInput = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +25,9 @@ export default function SearchInput({
         leftIcon={IconSearch}
         ref={inputRef}
         placeholder="Search high quality photos..."
-        defaultValue={search}
+        defaultValue={
+          !Array.isArray(slug) ? capitalize(decodeURIComponent(slug)) : ""
+        }
       />
     </form>
   );

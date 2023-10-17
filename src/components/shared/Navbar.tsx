@@ -7,6 +7,7 @@ import {
   IconMenu2,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import React, { useState } from "react";
 import IconTooltip from "./IconTooltip";
 import Logo from "./Logo";
@@ -14,6 +15,11 @@ import SearchInput from "./SearchInput";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
+
+  const { slug } = useParams();
+  if (!Array.isArray(slug)) {
+    console.log(decodeURIComponent(slug));
+  }
 
   return (
     <nav className="sticky top-0 left-0 bg-white flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-20 py-4 lg:py-8 w-full">
