@@ -1,32 +1,27 @@
-import type { Image } from "@/lib/unsplash";
-import { getPaginatedImages } from "@/lib/unsplash";
+import { Image, PaginatedImages } from "@/lib/unsplash";
 import { ColImages } from "@/lib/utils";
-import { useInfiniteQuery } from "@tanstack/react-query";
-
-import axios from "axios";
+import {
+  FetchNextPageOptions,
+  InfiniteData,
+  InfiniteQueryObserverResult,
+} from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-export default function ImageGrid({ slug }: { slug: string }) {
+export type ImageDataProps = {
+  data: InfiniteData<PaginatedImages> | undefined;
+  isFetching: boolean;
+  error: unknown;
+};
+export default function DesktopImageGrid({
+  data,
+  isFetching,
+  error,
+}: ImageDataProps) {
   const [imageCols, setImageCols] = useState<ColImages>({
     col1: null,
     col2: null,
     col3: null,
   });
-
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery({
-    queryKey: ["photos"],
-    queryFn: ({ pageParam = 1 }) => getPaginatedImages({ slug, pageParam }),
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
-
   useEffect(() => {
     if (!error && !isFetching && data) {
       let col1: Image[] = [],
@@ -49,21 +44,13 @@ export default function ImageGrid({ slug }: { slug: string }) {
   return (
     <div className="grid grid-cols-3 grid-rows-[auto_1fr] gap-4 min-h-[200vh] w-full ">
       <div className="flex flex-col gap-4">
-        <button
-          className="bg-blue-500 h-10 rounded-xl text-white font-bold"
-          onClick={() => {
-            fetchNextPage();
-          }}
-        >
-          Add imgs
-        </button>
         {imageCols.col1
           ? imageCols.col1.map((img: Image) => {
               if (img.width < img.height) {
                 return (
                   <img
                     src={img.urls?.regular}
-                    className="w-full object-cover rounded-lg"
+                    className="w-full object-cover h-[30rem] rounded-lg"
                     alt=""
                   />
                 );
@@ -104,13 +91,13 @@ export default function ImageGrid({ slug }: { slug: string }) {
       </div>
       <div className="flex flex-col gap-4">
         {imageCols.col3
-          ? imageCols.col3.map((img: Image) => {
+          ? imageCols.col3.map((img) => {
               if (img.width < img.height) {
                 return (
                   <img
                     src={img.urls?.regular}
                     className="w-full object-cover rounded-lg"
-                    alt=""
+                    alt={img.description}
                   />
                 );
               }
@@ -119,7 +106,7 @@ export default function ImageGrid({ slug }: { slug: string }) {
                 <img
                   src={img.urls?.regular}
                   className="w-full h-72 object-cover rounded-lg"
-                  alt=""
+                  alt={img.description}
                 />
               );
             })

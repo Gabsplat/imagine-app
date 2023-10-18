@@ -26,7 +26,9 @@ export default function SearchInput({ className }: { className?: string }) {
         ref={inputRef}
         placeholder="Search high quality photos..."
         defaultValue={
-          !Array.isArray(slug) ? capitalize(decodeURIComponent(slug)) : ""
+          !Array.isArray(slug) && slug != undefined
+            ? capitalize(decodeURIComponent(slug))
+            : ""
         }
       />
     </form>

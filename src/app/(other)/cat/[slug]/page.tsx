@@ -1,13 +1,11 @@
-"use client";
-
-import ImageGrid from "./ImageGrid";
+import ResponsiveImageGallery from "./ResponsiveImageGallery";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
   return (
-    <div className="">
-      <ImageGrid slug={slug} />
-    </div>
+    <main>
+      <ResponsiveImageGallery slug={slug} />
+    </main>
   );
 }

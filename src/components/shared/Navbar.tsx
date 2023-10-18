@@ -22,7 +22,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 left-0 bg-white flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-20 py-4 lg:py-8 w-full">
+    <nav className="sticky top-0 left-0 z-50 bg-white flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-20 py-4 lg:py-8 w-full">
       <div className="flex flex-row items-center lg:justify-between flex-1 w-full gap-4 lg:gap-0">
         <Logo />
         <SearchInput className="flex-1 lg:ml-20" />
