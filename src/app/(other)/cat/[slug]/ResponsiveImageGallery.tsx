@@ -38,9 +38,6 @@ export default function ResponsiveImageGallery({ slug }: { slug: string }) {
       Errores en el render de mobile, 
       no se por qué se hace un re-render en el componente casi como loop.
 
-      También tengo que arreglar el isInView y todo (aunque está bastante bien..).
-
-      Lo otro, después de un par de fetches se empieza a rellenar toda la última columna.
 
     */
   }
