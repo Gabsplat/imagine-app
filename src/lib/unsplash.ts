@@ -144,9 +144,12 @@ export async function getPaginatedImages({
   pageParam?: number;
 }): Promise<PaginatedImages> {
   return axios
-    .get(`https://api.unsplash.com/topics/${slug}/photos?page=${pageParam}`, {
-      headers,
-    })
+    .get(
+      `https://api.unsplash.com/topics/${slug}/photos?page=${pageParam}&per_page=12`,
+      {
+        headers,
+      }
+    )
     .then((res) => {
       return { images: res.data, nextPage: pageParam + 1 };
     });

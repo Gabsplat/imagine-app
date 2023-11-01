@@ -4,6 +4,7 @@ export default function MobileImageStack({
   data,
   isFetching,
   error,
+  fetchNextPage,
 }: ImageDataProps) {
   const sortedImages = data?.pages
     .flat()
