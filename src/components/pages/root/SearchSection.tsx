@@ -3,7 +3,7 @@ import SearchInput from "../../shared/SearchInput";
 import Categories from "./Categories";
 import RandomCategory from "./RandomCategory";
 
-export default function LeftSection() {
+export default function SearchSection() {
   return (
     <div className="pl-[5%] flex-1 py-12 h-full">
       <Logo />

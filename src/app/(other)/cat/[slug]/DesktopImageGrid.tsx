@@ -33,20 +33,14 @@ export default function DesktopImageGrid({
   });
 
   useEffect(() => {
-    console.log("DATA:", { data });
     if (!error && !isFetching && data) {
       let col1: Image[] = [],
         col2: Image[] = [],
         col3: Image[] = [];
       data.pages.forEach(({ images }) => {
-        let amountImages = images.length;
-        let firstColsLength = Math.floor(amountImages / 3);
-        col1 = [...col1, ...images.slice(0, firstColsLength)];
-        col2 = [...col2, ...images.slice(firstColsLength, firstColsLength * 2)];
-        col3 = [
-          ...col3,
-          ...images.slice(firstColsLength * 2, amountImages + 1),
-        ];
+        col1 = [...col1, ...images.slice(0, 4)];
+        col2 = [...col2, ...images.slice(4, 8)];
+        col3 = [...col3, ...images.slice(8, 12)];
       });
       setImageCols({ col1, col2, col3 });
     }
@@ -144,6 +138,7 @@ export default function DesktopImageGrid({
             })
           : null}
       </div>
+      {isFetching ? "Loading" : "Not loading"}
       {/* Infinite Query Div */}
       <div
         ref={containerRef}
@@ -152,3 +147,5 @@ export default function DesktopImageGrid({
     </div>
   );
 }
+
+const Image = () => {};

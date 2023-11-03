@@ -13,8 +13,6 @@ export default function MobileImageStack({
     })
     .flat();
 
-  console.log(sortedImages);
-
   return (
     <div className="flex flex-col gap-8">
       {data && sortedImages && !isFetching && !error

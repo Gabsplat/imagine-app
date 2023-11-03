@@ -18,10 +18,6 @@ export default function TestCall() {
     },
   });
 
-  useEffect(() => {
-    console.log(data);
-  }, [data, isError, isLoading]);
-
   return (
     <div className="mt-20 flex flex-row">
       {isLoading && "loading..."}

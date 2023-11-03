@@ -4,7 +4,7 @@ import { getRandomPhoto } from "@/lib/unsplash";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
-export default function RightSection() {
+export default function ImageDisplaySection() {
   return (
     <div className="w-2/5 opacity-50 h-full overflow-hidden grid grid-cols-2 grid-rows-[repeat(8,minmax(0,1fr))] gap-10">
       <img

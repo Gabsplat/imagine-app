@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import ImageDialog from "../../ImageDialog";
 import ResponsiveImageGallery from "./ResponsiveImageGallery";
 
 export default function Page({ params }: { params: { slug: string } }) {

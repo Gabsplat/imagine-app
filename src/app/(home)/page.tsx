@@ -1,15 +1,11 @@
-import TestCall from "@/components/pages/TestCall";
-import LeftSection from "@/components/pages/root/LeftSection";
-import RightSection from "@/components/pages/root/RightSection";
-import { Input } from "@/components/ui/input";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
+import ImageDisplaySection from "@/components/pages/root/ImageDisplaySection";
+import SearchSection from "@/components/pages/root/SearchSection";
 
 export default async function Home() {
   return (
     <main className="h-screen gap-32 flex">
-      <LeftSection />
-      <RightSection />
+      <SearchSection />
+      <ImageDisplaySection />
     </main>
   );
 }

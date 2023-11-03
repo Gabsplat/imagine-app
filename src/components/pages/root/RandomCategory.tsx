@@ -13,11 +13,10 @@ export default function RandomCategory() {
         href="#"
         className={`
             flex rounded-lg items-center justify-center 
-            bg-[length:115%] hover:bg-[length:102%]
-            transition-all duration-800 ease-in bg-top
-            hover:outline outline-2 outline-offset-1 outline-imagine-brown/30
-            bg-[url(https://images.unsplash.com/photo-1696550579939-6d5134d4bfc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80)] 
-            h-36 text-2xl font-bold text-white w-full
+            border-[1px] border-border 
+            shadow-sm hover:shadow-lg
+            bg-[url(https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center
+            h-36 text-3xl font-bold text-black border-2 w-full
             `}
       >
         Find a random photo

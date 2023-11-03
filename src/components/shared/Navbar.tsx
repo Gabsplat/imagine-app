@@ -17,12 +17,12 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
 
   const { slug } = useParams();
-  if (!Array.isArray(slug)) {
-    console.log(decodeURIComponent(slug));
-  }
+  // if (!Array.isArray(slug)) {
+  //   console.log(decodeURIComponent(slug));
+  // }
 
   return (
-    <nav className="sticky top-0 left-0 z-50 bg-white flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-20 py-4 lg:py-8 w-full border-b-2 border-mutted">
+    <nav className="sticky top-0 left-0 z-10 bg-white flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-20 py-4 lg:py-8 w-full border-b-2 border-mutted">
       <div className="flex flex-row items-center lg:justify-between flex-1 w-full gap-4 lg:gap-0">
         <Logo />
         <SearchInput className="flex-1 lg:ml-20" />

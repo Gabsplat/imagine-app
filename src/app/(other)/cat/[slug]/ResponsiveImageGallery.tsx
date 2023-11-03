@@ -1,23 +1,16 @@
 "use client";
 
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import type { Image, PaginatedImages } from "@/lib/unsplash";
 import { getPaginatedImages } from "@/lib/unsplash";
-import { ColImages } from "@/lib/utils";
-import {
-  FetchNextPageOptions,
-  InfiniteData,
-  InfiniteQueryObserverResult,
-  useInfiniteQuery,
-} from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-import axios from "axios";
-import { Suspense, useEffect, useState } from "react";
+import { IconLoader, IconLoader2, IconLoader3 } from "@tabler/icons-react";
+import { useEffect } from "react";
 import DesktopImageGrid from "./DesktopImageGrid";
 import MobileImageStack from "./MobileImageStack";
 
 export default function ResponsiveImageGallery({ slug }: { slug: string }) {
+  const matches = useMediaQuery("(min-width: 768px)");
   const {
     data,
     error,
@@ -31,19 +24,15 @@ export default function ResponsiveImageGallery({ slug }: { slug: string }) {
     queryFn: ({ pageParam = 1 }) => getPaginatedImages({ slug, pageParam }),
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
-  const matches = useMediaQuery("(min-width: 768px)");
-
-  {
-    /* 
-      Errores en el render de mobile, 
-      no se por qué se hace un re-render en el componente casi como loop.
-
-
-    */
-  }
 
   return (
-    <div className="">
+    <section>
+      {!data && isFetching && !error ? (
+        <div className="h-full w-full flex items-center justify-center">
+          <IconLoader2 size={25} className="animate-spin text-gray-400" />
+        </div>
+      ) : null}
+      {error ? <p>No images found</p> : null}
       {matches && data ? (
         <DesktopImageGrid
           fetchNextPage={fetchNextPage}
@@ -59,6 +48,6 @@ export default function ResponsiveImageGallery({ slug }: { slug: string }) {
           error={error}
         />
       )}
-    </div>
+    </section>
   );
 }
