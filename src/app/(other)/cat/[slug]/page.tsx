@@ -6,6 +6,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="mt-2">
+      {/* <ImageDialog /> */}
       <ResponsiveImageGallery slug={slug} />
     </main>
   );

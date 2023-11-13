@@ -16,7 +16,7 @@ export default function RandomCategory() {
             border-[1px] border-border 
             shadow-sm hover:shadow-lg
             bg-[url(https://images.unsplash.com/photo-1504275107627-0c2ba7a43dba?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center
-            h-36 text-3xl font-bold text-black border-2 w-full
+            h-36 text-3xl font-bold text-black w-full
             `}
       >
         Find a random photo

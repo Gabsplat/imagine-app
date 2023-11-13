@@ -25,6 +25,14 @@ export default function ResponsiveImageGallery({ slug }: { slug: string }) {
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 
+  useEffect(() => {
+    if (data) {
+      console.log("data:", data);
+    } else if (error) {
+      console.log("error:", error);
+    }
+  }, [data, error]);
+
   return (
     <section>
       {!data && isFetching && !error ? (

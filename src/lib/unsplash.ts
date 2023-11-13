@@ -12,6 +12,7 @@ export type Image = {
   likes: number;
   liked_by_user: boolean;
   description: string;
+  alt_description: string;
   user: {
     id: string;
     username: string;

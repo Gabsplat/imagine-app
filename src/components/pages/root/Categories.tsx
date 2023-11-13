@@ -1,5 +1,3 @@
-"use client";
-
 import { IconCategory } from "@tabler/icons-react";
 import Link from "next/link";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -35,7 +33,7 @@ const categoriesData: Category[] = [
   },
   {
     title: "Architecture",
-    href: "/cat/architecture",
+    href: "/cat/architecture-interior",
     bgImage: "/assets/home/categories/architecture.jpg",
   },
   {
@@ -55,12 +53,12 @@ const categoriesData: Category[] = [
   },
   {
     title: "3D Render",
-    href: "/cat/3drender",
+    href: "/cat/3d-renders",
     bgImage: "/assets/home/categories/3drenders.jpg",
   },
   {
     title: "Fashion",
-    href: "/cat/fashion",
+    href: "/cat/fashion-beauty",
     bgImage: "/assets/home/categories/fashion.jpg",
   },
   {
@@ -71,10 +69,6 @@ const categoriesData: Category[] = [
 ];
 
 const CategoryGrid = () => {
-  const [currentHoveredCard, setCurrentHoveredCard] = useState<number | null>(
-    null
-  );
-
   return (
     <div className="grid grid-cols-6 grid-rows-2 gap-4 h-auto">
       {categoriesData.map(({ title, href, bgImage }, index) => {
@@ -87,8 +81,6 @@ const CategoryGrid = () => {
             href={href}
             isWider={isWider}
             id={index}
-            setHovered={setCurrentHoveredCard}
-            currentHovered={currentHoveredCard}
           />
         );
       })}
@@ -99,8 +91,6 @@ const CategoryGrid = () => {
 type CategoryCard = Category & {
   isWider?: boolean;
   id: number;
-  setHovered: Dispatch<SetStateAction<number | null>>;
-  currentHovered: number | null;
 };
 
 const CategoryCard = ({ title, href, bgImage, isWider, id }: CategoryCard) => {
